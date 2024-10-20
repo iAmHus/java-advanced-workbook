@@ -5,6 +5,9 @@ import com.practice.java8.functional.interfaces.Functionable;
 import com.practice.java8.functional.interfaces.Printable;
 import com.practice.java8.functional.interfaces.Retrievable;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -22,6 +25,11 @@ public class BasicLambdas {
 
         function();
 
+        sortAge(getPeople());
+        System.out.println("*******");
+        sortName(getPeople());
+        System.out.println("*******");
+        sortHeight(getPeople());
     }
 
     private static void consumer() {
@@ -77,5 +85,42 @@ public class BasicLambdas {
 
     private static<T> void check (T t, Predicate<T> predicate ) {
         System.out.println(predicate.test(t));
+    }
+
+    private static List<Person> getPeople() {
+        List<Person> result = new ArrayList<>();
+
+        result.add(new Person("Mike", 33, 1.8));
+        result.add(new Person("Mary", 25, 1.4));
+        result.add(new Person("Alan", 34, 1.7));
+        result.add(new Person("Zoe", 30, 1.5));
+
+        return result;
+    }
+
+    private static void sortAge(List<Person> people) {
+        Function<Person, Integer>  ageExtractorFun = (Person p) -> p.getAge();
+        Comparator<Person> comparatorRef = Comparator.comparing(ageExtractorFun);
+
+        people.sort(comparatorRef);
+
+        people.forEach(p -> System.out.println(p.getName() + "-" + p.getAge() + "-" + p.getHeight()));
+    }
+
+    private static void sortName(List<Person> people) {
+        Comparator<Person> nameComparator = Comparator.comparing(p -> p.getName());
+
+        people.sort(nameComparator);
+
+        people.forEach(p -> System.out.println(p.getName() + "-" + p.getAge() + "-" + p.getHeight()));
+
+    }
+
+    private static void sortHeight(List<Person> people) {
+        Comparator<Person> heightComparator = Comparator.comparing(Person::getHeight);
+        people.sort(heightComparator);
+
+        people.forEach(p -> System.out.println(p.getName() + "-" + p.getAge() + "-" + p.getHeight()));
+
     }
 }

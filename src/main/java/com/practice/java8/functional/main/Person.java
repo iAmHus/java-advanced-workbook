@@ -1,8 +1,6 @@
 package com.practice.java8.functional.main;
 
 public class Person {
-
-
     private Integer age;
     private String name;
     private Double height;

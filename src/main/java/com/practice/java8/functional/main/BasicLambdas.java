@@ -1,5 +1,6 @@
 package com.practice.java8.functional.main;
 
+import com.practice.java8.functional.dao.Person;
 import com.practice.java8.functional.interfaces.Evaluate;
 import com.practice.java8.functional.interfaces.Functionable;
 import com.practice.java8.functional.interfaces.Printable;

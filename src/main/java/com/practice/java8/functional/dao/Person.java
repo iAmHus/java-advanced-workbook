@@ -1,4 +1,4 @@
-package com.practice.java8.functional.main;
+package com.practice.java8.functional.dao;
 
 public class Person {
     private Integer age;

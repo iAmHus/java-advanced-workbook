@@ -1,4 +1,4 @@
-package com.practice.java8.functional.main;
+package com.practice.java8.lambdas.main;
 
 import java.util.ArrayList;
 import java.util.Arrays;

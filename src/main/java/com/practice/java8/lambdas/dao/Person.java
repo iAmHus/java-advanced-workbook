@@ -1,4 +1,4 @@
-package com.practice.java8.functional.dao;
+package com.practice.java8.lambdas.dao;
 
 public class Person {
     private Integer age;

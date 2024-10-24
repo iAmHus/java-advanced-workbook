@@ -1,4 +1,4 @@
-package com.practice.java8.functional.interfaces;
+package com.practice.java8.lambdas.interfaces;
 
 @FunctionalInterface
 public interface Evaluate<T> {

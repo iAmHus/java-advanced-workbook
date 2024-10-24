@@ -1,10 +1,10 @@
-package com.practice.java8.functional.main;
+package com.practice.java8.lambdas.main;
 
-import com.practice.java8.functional.dao.Person;
-import com.practice.java8.functional.interfaces.Evaluate;
-import com.practice.java8.functional.interfaces.Functionable;
-import com.practice.java8.functional.interfaces.Printable;
-import com.practice.java8.functional.interfaces.Retrievable;
+import com.practice.java8.lambdas.dao.Person;
+import com.practice.java8.lambdas.interfaces.Evaluate;
+import com.practice.java8.lambdas.interfaces.Functionable;
+import com.practice.java8.lambdas.interfaces.Printable;
+import com.practice.java8.lambdas.interfaces.Retrievable;
 
 import java.util.ArrayList;
 import java.util.Comparator;

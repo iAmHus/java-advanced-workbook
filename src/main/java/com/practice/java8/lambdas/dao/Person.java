@@ -23,5 +23,10 @@ public class Person {
         return height;
     }
 
-
+    @Override
+    public String toString() {
+        return "Person:: Name: " + this.getName() +
+                " Age: " + this.getAge() +
+                " Height: " + this.getHeight();
+    }
 }

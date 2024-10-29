@@ -6,6 +6,8 @@ import com.practice.java8.streams.dao.Item;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+import java.util.function.BinaryOperator;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -52,7 +54,7 @@ public class StreamsMain {
                 new Person("Alan", 22, 5.4),
                 new Person("Zoe", 20, 5.3),
                 new Person("Peter", 29, 5.6)
-                );
+        );
 
         personList.stream()
                 .max(Comparator.comparing(Person::getAge))
@@ -76,5 +78,23 @@ public class StreamsMain {
         System.out.println(intList.stream()
                 .mapToInt(Integer::intValue)
                 .sum());
+
+        System.out.println("---- reduce ops Optional<T> reduce(BinaryOperator<T> accumulator) -----");
+        List.of(10, 47, 33, 23)
+                .stream()
+                .reduce(BinaryOperator.maxBy(Comparator.comparing(n -> n)))
+                .ifPresent(System.out::println);
+
+
+    }
+
+    public static Optional<String> getGrade(int marks) {
+        Optional<String> grade = Optional.empty();
+        if (marks > 50) {
+            grade = Optional.of("PASS");
+        } else {
+            grade.of("FAIL");
+        }
+        return grade;
     }
 }

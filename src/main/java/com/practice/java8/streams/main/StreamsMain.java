@@ -21,6 +21,14 @@ public class StreamsMain {
 
         tryFlatMap();
 
+        System.out.println("=== Trying out Optional ===");
+        Optional<String> grade1 = getGrade(50);
+        Optional<String> grade2 = getGrade(45);
+
+        System.out.println(grade1.orElse("UNKNOWN"));
+
+        grade2.ifPresent(System.out::println);
+        System.out.println(grade2.orElse("Empty"));
     }
 
 

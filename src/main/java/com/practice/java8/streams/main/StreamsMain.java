@@ -2,12 +2,14 @@ package com.practice.java8.streams.main;
 
 import com.practice.java8.lambdas.dao.Person;
 import com.practice.java8.streams.dao.Item;
+import com.practice.java8.streams.dao.Book;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.BinaryOperator;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -67,6 +69,40 @@ public class StreamsMain {
         personList.stream()
                 .max(Comparator.comparing(Person::getAge))
                 .ifPresent(System.out::println);
+
+        System.out.println("=== Filter with custom objects ===");
+
+        List.of(new Book("Thinking in Java", 30.0),
+                        new Book("Java in 24 hrs", 20.0),
+                        new Book("Java Recipes", 10.0))
+                .stream()
+                .filter(b -> b.getPrice() > 10)
+                .mapToDouble(Book::getPrice)
+                .average()
+                .ifPresent(System.out::println);
+
+        List.of(new Book("Thinking in Java", 30.0),
+                        new Book("Java in 24 hrs", 20.0),
+                        new Book("Java Recipes", 10.0))
+                .stream()
+                .filter(b -> b.getPrice() > 90)
+                .mapToDouble(Book::getPrice)
+                .average()
+                .ifPresentOrElse(System.out::println, () -> System.out.println("NO VALUES FOUND"));
+
+        System.out.println("=== Using Collectors.toMap and filtering ====");
+
+        List.of(new Book("Atlas Shrugged", 10.0),
+                        new Book("Freedom at midnight", 5.0),
+                        new Book("Gone with the wind", 5.0))
+                .stream()
+                .collect(Collectors.toMap(Book::getTitle, Book::getPrice))
+                .entrySet()
+                .stream().filter(e -> e.getKey().startsWith("A"))
+                .forEach(System.out::println);
+
+
+
     }
 
     private static void tryIntStreamOps() {

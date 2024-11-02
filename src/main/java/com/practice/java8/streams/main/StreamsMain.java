@@ -102,6 +102,17 @@ public class StreamsMain {
                 .forEach(System.out::println);
 
 
+        System.out.println("=== IntStream from Custom objs ====");
+        System.out.println(List.of(
+                        new Person("Bob", 31, 5.4),
+                        new Person("Paul", 32, 5.3),
+                        new Person("John", 33, 5.6)
+                ).stream()
+                .filter(p -> p.getAge() < 30)
+                .mapToInt(Person::getAge)
+                .average()
+                .orElse(0.0));
+
 
     }
 

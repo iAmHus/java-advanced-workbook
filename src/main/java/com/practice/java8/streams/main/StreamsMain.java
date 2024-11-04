@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -31,8 +32,18 @@ public class StreamsMain {
 
         grade2.ifPresent(System.out::println);
         System.out.println(grade2.orElse("Empty"));
+
+
+        tryDoubleStreamOps();
     }
 
+    private static void tryDoubleStreamOps() {
+
+        System.out.println("=== Double stream ops ===");
+        System.out.println(DoubleStream.of(0, 2, 4)
+                .filter(n -> n % 2 != 0)
+                .sum());
+    }
 
     private static void tryFlatMap() {
 

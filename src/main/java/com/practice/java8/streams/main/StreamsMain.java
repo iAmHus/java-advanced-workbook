@@ -35,6 +35,23 @@ public class StreamsMain {
 
 
         tryDoubleStreamOps();
+
+        lazyEval();
+    }
+
+    private static void lazyEval() {
+
+        System.out.println("=== LAZY EVAL ===");
+        List<Integer> ls =
+                Arrays.asList(11, 11, 22, 33, 33, 55, 66)
+                        ;
+
+        System.out.println(ls.stream()
+                .anyMatch(n -> n == 11));
+
+
+        System.out.println(ls.stream().noneMatch(n -> n % 11 == 0));
+
     }
 
     private static void tryDoubleStreamOps() {
